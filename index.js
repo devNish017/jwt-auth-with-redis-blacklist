@@ -18,7 +18,14 @@ app.use(cookieParser())
 
 
 app.use(rateLimiter);
-app.use("/",userRoutes);
+app.use("/api",userRoutes);
+
+app.get("/", (req, res) => {
+  res.json({
+    status: "OK",
+    message: "JWT Auth API is running 🚀"
+  });
+});
 
 const PORT=process.env.PORT ||4000;
 const mongoURL=process.env.URL;
